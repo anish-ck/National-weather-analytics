@@ -1,5 +1,7 @@
 # National Weather Intelligence Platform
 
+![National Weather Intelligence dashboard](screenshot/01.png)
+
 An open-source, Dockerized MVP for turning noisy weather reports into explainable, geospatial weather events for India.
 
 It accepts citizen and mock reports, streams them through Kafka, retrieves relevant trusted evidence from Qdrant, assigns an evidence-grounded verdict, stores the result in PostgreSQL/PostGIS, and immediately displays it on a live map dashboard.
