@@ -1,0 +1,4 @@
+import { useState } from 'react'; import { api } from '../services/api';
+export function ReportForm({ done }:{done:()=>void}) { const [text,setText]=useState('Heavy rainfall and flooding near Madurai railway station.'); const [saving,setSaving]=useState(false); const [message,setMessage]=useState('');
+ async function submit(e:React.FormEvent) { e.preventDefault(); setSaving(true); try { const response = await api.submit({text,latitude:9.9195,longitude:78.1193,event_type:'FLOOD',location_name:'Madurai'}); setMessage(`Queued ${response.event_id.slice(0,8)} — watch the live map.`); done(); } catch { setMessage('Could not submit report.'); } finally { setSaving(false); } }
+ return <form onSubmit={submit} className="report-form"><label>Citizen report</label><textarea value={text} onChange={e=>setText(e.target.value)} /><button disabled={saving}>{saving?'Sending…':'Submit live report'}</button>{message && <small>{message}</small>}</form> }

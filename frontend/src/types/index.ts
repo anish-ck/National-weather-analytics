@@ -1,0 +1,4 @@
+export type Verdict = 'SUPPORTED' | 'REFUTED' | 'MISLEADING' | 'UNCERTAIN';
+export interface Evidence { source: string; title: string; content: string; similarity_score?: number; rerank_score?: number }
+export interface WeatherEvent { event_id: string; source: string; event_type: string; description: string; latitude: number | null; longitude: number | null; location_name: string | null; state: string | null; district: string | null; timestamp: string; verification_status: Verdict; confidence_score: number; verification_reason: string; image_url?: string; evidence: Evidence[] }
+export interface Stats { total_reports:number; verified_events:number; events_today:number; active_hazards:number; verdicts:Record<string,number>; top_event_types:Record<string,number>; top_affected_regions:Record<string,number> }
